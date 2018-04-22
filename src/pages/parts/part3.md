@@ -1,1 +1,1 @@
-\part{Summary}
+\part{まとめ}

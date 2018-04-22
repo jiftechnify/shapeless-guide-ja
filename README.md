@@ -1,6 +1,7 @@
 # The Type Astronaut's Guide to Shapeless in Japanese
 
 ["The Type Astronaut's Guide to Shapeless"](https://github.com/underscoreio/shapeless-guide)の非公式和訳 :rocket: :jp:
+
 (Japanese translation of the book "The Type Astronaut's Guide to Shapeless")
 
 ***

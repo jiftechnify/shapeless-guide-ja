@@ -1,1 +1,1 @@
-\part{Type class derivation}
+\part{型クラスの自動導出}

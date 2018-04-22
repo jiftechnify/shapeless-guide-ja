@@ -23,7 +23,7 @@ pages:
   - foreword.md
   #
   - intro/index.md
-  # - intro/generic.md
+  - intro/generic.md
   # - intro/thisbook.md
   # - intro/source-code.md
   # - intro/contributors.md

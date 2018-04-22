@@ -1,1 +1,1 @@
-\part{Shapeless ops}
+\part{Shapeless の演算}

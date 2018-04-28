@@ -26,7 +26,7 @@ pages:
   - intro/generic.md
   - intro/thisbook.md
   - intro/source-code.md
-  # - intro/contributors.md
+  - intro/contributors.md
   #
   # - parts/part1.md
   #

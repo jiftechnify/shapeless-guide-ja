@@ -79,5 +79,5 @@ pages:
   # - conclusion/index.md
 
   # - notes/todos.md
-  # - links.md
+  - links.md
 ...

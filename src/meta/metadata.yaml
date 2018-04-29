@@ -28,9 +28,9 @@ pages:
   - intro/source-code.md
   - intro/contributors.md
   #
-  # - parts/part1.md
+  - parts/part1.md
   #
-  # - representations/index.md
+  - representations/index.md
   # - representations/adts.md
   # - representations/products.md
   # - representations/coproducts.md

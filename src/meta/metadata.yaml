@@ -32,7 +32,7 @@ pages:
   #
   - representations/index.md
   - representations/adts.md
-  # - representations/products.md
+  - representations/products.md
   # - representations/coproducts.md
   # - representations/summary.md
   #

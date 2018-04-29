@@ -17,7 +17,7 @@ sealed trait Shape
 final case class Rectangle(width: Double, height: Double) extends Shape
 final case class Circle(radius: Double) extends Shape
 
-val rect: Shape = Rectangle(3.0, 4,0)
+val rect: Shape = Rectangle(3.0, 4.0)
 val circ: Shape = Circle(1.0)
 ```
 
@@ -30,7 +30,7 @@ ADT の美しさは、それが完全に型安全であるところにある。
 def area(shape: Shape): Double =
   shape match {
     case Rectangle(w, h) => w * h
-    case Circle(r)       => math.Pi * r * R
+    case Circle(r)       => math.Pi * r * r
   }
 ```
 
@@ -51,7 +51,7 @@ type Rectangle2 = (Double, Double)
 type Circle2    = Double
 type Shape2     = Either[Rectangle2, Circle2]
 
-val rect2: Shape2 = Left((3,0, 4,0))
+val rect2: Shape2 = Left((3.0, 4.0))
 val circ2: Shape2 = Right(1.0)
 ```
 
@@ -68,7 +68,7 @@ def area2(shape: Shape2): Double =
 
 ```tut:book
 area2(rect2)
-ares2(circ2)
+area2(circ2)
 ```
 
 重要なことは、`Shape2` が `Shape` よりも **ジェネリックな** 表現であるということだ[^generic]。

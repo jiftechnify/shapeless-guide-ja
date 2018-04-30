@@ -42,7 +42,7 @@ pages:
   - generic/coproducts.md
   - generic/lazy.md
   - generic/debugging.md
-  # - generic/summary.md
+  - generic/summary.md
   #
   # - type-level-programming/index.md
   # - type-level-programming/dependent-types.md

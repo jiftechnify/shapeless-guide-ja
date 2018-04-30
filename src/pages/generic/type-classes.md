@@ -97,7 +97,7 @@ implicit def pairEncoder[A, B](
   new CsvEncoder[(A, B)] {
     def encode(pair: (A, B)): List[String] = {
       val (a, b) = pair
-      aEncoder.encode(a) ++ bEncoder.encoder(b)
+      aEncoder.encode(a) ++ bEncoder.encode(b)
     }
   }
 ```
@@ -150,7 +150,7 @@ implicitly[CsvEncoder[IceCream]]
 shapeless にある、"`the`"という名前の特殊なメソッドを利用することもできる(詳しくは後ほど説明する):
 
 ```tut:book:silent
-import.shapeless._
+import shapeless._
 ```
 
 ```tut:book

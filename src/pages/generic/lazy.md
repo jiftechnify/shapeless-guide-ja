@@ -171,7 +171,7 @@ implicit def hlistEncoder[H, T <: HList](
   hEncoder: Lazy[CsvEncoder[H]], // Lazy で包む
   tEncoder: CsvEncoder[T]
 ): CsvEncoder[H :: T] = createEncoder {
-  case h :: T =>
+  case h :: t =>
     hEncoder.value.encode(h) ++ tEncoder.encode(t)
 }
 ```

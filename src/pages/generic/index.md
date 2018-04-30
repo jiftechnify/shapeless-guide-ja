@@ -1,1 +1,4 @@
-# Automatically deriving type class instances {#sec:generic}
+# 型クラスインスタンスの自動導出 {#sec:generic}
+
+前章では、任意の ADT のインスタンスを `HList` と `Coproduct` からなるジェネリック表現に変換することを可能にする、`Generic` 型クラスを見た。
+本章では、自動的な型クラスのインスタンスの導出という、最初の本格的なユースケースを見ていく。

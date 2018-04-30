@@ -36,7 +36,7 @@ pages:
   - representations/coproducts.md
   - representations/summary.md
   #
-  # - generic/index.md
+  - generic/index.md
   # - generic/type-classes.md
   # - generic/products.md
   # - generic/coproducts.md

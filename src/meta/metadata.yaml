@@ -37,7 +37,7 @@ pages:
   - representations/summary.md
   #
   - generic/index.md
-  # - generic/type-classes.md
+  - generic/type-classes.md
   # - generic/products.md
   # - generic/coproducts.md
   # - generic/lazy.md

@@ -39,7 +39,7 @@ pages:
   - generic/index.md
   - generic/type-classes.md
   - generic/products.md
-  # - generic/coproducts.md
+  - generic/coproducts.md
   # - generic/lazy.md
   # - generic/debugging.md
   # - generic/summary.md

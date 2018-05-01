@@ -45,7 +45,7 @@ pages:
   - generic/summary.md
   #
   - type-level-programming/index.md
-  # - type-level-programming/dependent-types.md
+  - type-level-programming/dependent-types.md
   # - type-level-programming/dependent-functions.md
   # - type-level-programming/summary.md
   #

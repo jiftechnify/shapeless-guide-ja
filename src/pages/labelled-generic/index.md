@@ -1,1 +1,8 @@
-# Accessing names during implicit derivation {#sec:labelled-generic}
+# 暗黙値導出中の型名へのアクセス {#sec:labelled-generic}
+
+我々が定義する型クラスのインスタンスはしばしば、型だけでなく、より多くの情報にアクセスする必要がある。
+本章では、フィールド名やその型の名前にアクセス可能な `Generic` の変種である `LabelledGeneric` について見ていく。
+
+説明を始める前に、いくつかの理論を説明する。
+`LabelledGeneric` は、型レベルに名前の情報を公開するために、いくつかの巧妙なテクニックを利用している。
+これらのテクニックを理解するには、**リテラル型(literal type)**、**シングルトン型(singleton type)**、**幽霊型(phantom type)**、そして **型タグ付け(type tagging)** について知っておかなければならない。

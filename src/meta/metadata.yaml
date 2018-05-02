@@ -50,7 +50,7 @@ pages:
   - type-level-programming/summary.md
   #
   - labelled-generic/index.md
-  # - labelled-generic/literal-types.md
+  - labelled-generic/literal-types.md
   # - labelled-generic/products.md
   # - labelled-generic/coproducts.md
   # - labelled-generic/summary.md

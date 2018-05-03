@@ -55,9 +55,9 @@ pages:
   - labelled-generic/coproducts.md
   - labelled-generic/summary.md
   #
-  # - parts/part2.md
+  - parts/part2.md
   #
-  # - ops/index.md
+  - ops/index.md
   # - ops/init-last.md
   # - ops/penultimate.md
   # - ops/migration.md

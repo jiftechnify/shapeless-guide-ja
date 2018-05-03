@@ -53,7 +53,7 @@ pages:
   - labelled-generic/literal-types.md
   - labelled-generic/products.md
   - labelled-generic/coproducts.md
-  # - labelled-generic/summary.md
+  - labelled-generic/summary.md
   #
   # - parts/part2.md
   #

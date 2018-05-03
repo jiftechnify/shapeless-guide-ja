@@ -62,7 +62,7 @@ pages:
   - ops/penultimate.md
   - ops/migration.md
   - ops/record.md
-  # - ops/summary.md
+  - ops/summary.md
   #
   # - poly/index.md
   # - poly/poly.md

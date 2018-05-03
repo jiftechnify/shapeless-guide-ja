@@ -34,7 +34,7 @@ implicit def hlistPenultimate[L <: HList, M <: HList, O](
   implicit
   init: hlist.Init.Aux[L, M],
   last: hlist.Last.Aux[M, O]
-): Penultimate.Aux[L] {
+): Penultimate.Aux[L, O] = {
   new Penultimate[L] {
     type Out = O
     def apply(l: L): O =
@@ -86,7 +86,7 @@ bigList.penultimate
 implicit def genericPenultimate[A, R, O](
   implicit
   generic: Generic.Aux[A, R],
-  penultimate: Penultimate[R, O]
+  penultimate: Penultimate.Aux[R, O]
 ): Penultimate.Aux[A, O] =
   new Penultimate[A] {
     type Out = O

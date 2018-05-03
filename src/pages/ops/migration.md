@@ -18,7 +18,7 @@ case class IceCreamV1(name: String, numCherries: Int, inCone: Boolean)
 case class IceCreamV2a(name: String, inCone: Boolean)
 
 // フィールドの並べ替え
-case class IceCreamV2b(name: String. inCone: Boolean, numCherries: Int)
+case class IceCreamV2b(name: String, inCone: Boolean, numCherries: Int)
 
 // フィールドの挿入(デフォルト値を定めることができると過程する):
 case class IceCreamV2c(
@@ -104,7 +104,7 @@ IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2b]
 `Align` を用いて、我々のインスタンスを次のように再定義できる:
 
 ```tut:book:silent
-implicit de genericMigration[
+implicit def genericMigration[
   A, B,
   ARepr <: HList, BRepr <: HList,
   Unaligned <: HList
@@ -116,7 +116,7 @@ implicit de genericMigration[
   align   : hlist.Align[Unaligned, BRepr]
 ): Migration[A, B] = new Migration[A, B] {
   def apply(a: A): B =
-    bGen.from(align.apply(inter.applyy(aGen.to(a))))
+    bGen.from(align.apply(inter.apply(aGen.to(a))))
 }
 ```
 
@@ -203,7 +203,7 @@ implicit def emptyHList[K <: Symbol, H, T <: HList](
 ```tut:book:silent
 implicit def genericMigration[
   A, B, ARepr <: HList, BRepr <: HList,
-  Commin <: HList, Added <: HList, Unaligned <: HList
+  Common <: HList, Added <: HList, Unaligned <: HList
 ](
   implicit
   aGen    : LabelledGeneric.Aux[A, ARepr],

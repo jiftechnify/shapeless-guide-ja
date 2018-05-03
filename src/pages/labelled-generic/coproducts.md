@@ -1,4 +1,4 @@
-## Deriving coproduct instances with *LabelledGeneric*
+## *LabelledGeneric* を用いた余積型の型クラスインスタンスの導出
 
 ```tut:book:invisible:reset
 // ----------------------------------------------
@@ -90,3 +90,72 @@ final case class Circle(radius: Double) extends Shape
 
 // ----------------------------------------------
 ```
+
+`Coproduct` に `LabelledGeneric` を適用するには、既に説明した概念を組み合わせることになる。
+まず始めに、`LabelledGeneric` によって導出される `Coproduct` の型を調べていこう。
+[@sec:generic]章の `Shape` ADT を再び見てみよう:
+
+```tut:book:silent
+import shapeless.LabelledGeneric
+
+sealed trait Shape
+final case class Rectangle(width: Double, height: Double) extends Shape
+final case class Circle(radius: Double) extends Shape
+```
+
+```tut:book
+LabelledGeneric[Shape].to(Circle(1.0))
+```
+
+`Coproduct` の型をより読みやすく整形すると、以下のようになる:
+
+```scala
+// Rectangle with KeyTag[Symbol with Tagged["Rectangle"], Rectangle] :+:
+// Circle    with KeyTag[Symbol with Tagged["Circle"],    Circle]    :+:
+// CNil
+```
+
+ご覧の通り、結果はそれぞれ型の名前でタグ付けされた、`Shape` のサブ型からなる `Coproduct` となる。
+`:+:` と `CNil` に対する `JsonEncoder` を書く際に、この情報を利用できる:
+
+```tut:book:silent
+import shapeless.{Coproduct, :+:, CNil, Inl, Inr, Witness, Lazy}
+import shapeless.labelled.FieldType
+
+implicit val cnilObjectEncoder: JsonObjectEncoder[CNil] =
+  createObjectEncoder(cnil => throw new Exception("Inconceivable!"))
+
+implicit val coproductObjectEncoder[K <: Symbol, H, T <: Coproduct](
+  implicit
+  witness: Witness.Aux[K],
+  hEncoder: Lazy[JsonEncoder[H]],
+  tEncoder: JsonObjectEncoder[T]
+): JsonObjectEncoder[FieldType[K, H] :+: T] = {
+  val typeName = witness.value.name
+  createObjectEncoder {
+    case Inl(h) =>
+      JsonObject(List(typeName -> hEncoder.value.encode(h)))
+
+    case Inr(t) =>
+      tEncoder.encode(t)
+  }
+}
+```
+
+`coproductEncoder` は `hlistEncoder` と同様のパターンに従っている。
+ここには3つの型パラメータがある:
+型の名前を表す `K`、`Coproduct` の先頭の値の型 `H`、そして先頭以外の値の型 `T`だ。
+結果の型ではこれらの3つの関係を示すために `FieldType` と `:+:` を用い、型名に実行時にアクセスするために `Witness` を利用している。
+結果は、1つのキー・値ペアを含む。キーは型の名前で、値は中身の変換結果となる:
+
+```tut:book:silent
+val shape: Shape = Circle(1.0)
+```
+
+```tut:book
+JsonEncoder[Shape].encode(shape)
+```
+
+少し工夫すれば、他の形式でエンコードすることもできる。
+例えば、出力に `"type"` フィールドを追加したり、ユーザがフォーマットを設定できるようにすることさえできる。
+Sam Halliday の [spray-json-shapeless][link-spray-json-shapeless] は、親しみやすく、それでいて多大な柔軟性を提供する、コードベースの優れた一例である。

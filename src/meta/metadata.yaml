@@ -59,7 +59,7 @@ pages:
   #
   - ops/index.md
   - ops/init-last.md
-  # - ops/penultimate.md
+  - ops/penultimate.md
   # - ops/migration.md
   # - ops/record.md
   # - ops/summary.md

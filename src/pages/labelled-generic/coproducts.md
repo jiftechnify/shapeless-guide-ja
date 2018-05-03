@@ -125,7 +125,7 @@ import shapeless.labelled.FieldType
 implicit val cnilObjectEncoder: JsonObjectEncoder[CNil] =
   createObjectEncoder(cnil => throw new Exception("Inconceivable!"))
 
-implicit val coproductObjectEncoder[K <: Symbol, H, T <: Coproduct](
+implicit def coproductObjectEncoder[K <: Symbol, H, T <: Coproduct](
   implicit
   witness: Witness.Aux[K],
   hEncoder: Lazy[JsonEncoder[H]],

@@ -148,7 +148,7 @@ import shapeless.Witness
 import shapeless.labelled.FieldType
 
 implicit def hlistObjectEncoder[K, H, T <: HList](
-  import
+  implicit
   hEncoder: Lazy[JsonEncoder[H]],
   tEncoder: JsonObjectEncoder[T]
 ): JsonObjectEncoder[FieldType[K, H] :: T] = ???
@@ -194,9 +194,9 @@ implicit def hlistObjectEncoder[K <: Symbol, H, T <: HList](
   tEncoder: JsonObjectEncoder[T]
 ): JsonObjectEncoder[FieldType[K, H] :: T] = {
   val fieldName: String = witness.value.name
-  createObjectEncoder { hList =>
+  createObjectEncoder { hlist =>
     val head = hEncoder.value.encode(hlist.head)
-    val tait = tEncoder.encode(hlist.tail)
+    val tail = tEncoder.encode(hlist.tail)
     JsonObject((fieldName, head) :: tail.fields)
   }
 }

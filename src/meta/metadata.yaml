@@ -64,7 +64,7 @@ pages:
   - ops/record.md
   - ops/summary.md
   #
-  # - poly/index.md
+  - poly/index.md
   # - poly/poly.md
   # - poly/map-flatmap-fold.md
   # - poly/product-mapper.md

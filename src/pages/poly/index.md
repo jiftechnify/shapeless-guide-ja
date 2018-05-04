@@ -1,4 +1,27 @@
-# Functional operations on *HLists* {#sec:poly}
+# *HList* 上の関数的演算 {#sec:poly}
 
+「通常の」Scala プログラムでは `map` や `flatMap` といった関数的演算が多用される。
+ここで疑問が浮かぶ: 似たような演算を `HList` の上で行うことはできるのだろうか?
+答えは「可能」だ。しかし、通常の Scala で行うのとは少し違ったやり方をする必要がある。
+利用するメカニズムが型クラスに基づいている、と言っても驚かないだろう。これを行う助けになる一連の演算型クラスも用意されている。
 
-## Motivation: mapping over an *HList*
+その型クラス自体を掘り下げていく前に、不均質なデータ型を変換するのに適した **多相的関数(polymorphic function)** を shapeless がどのように表現しているのかについて説明する必要がある。
+
+## 動機: *HList* の変換
+
+`map` メソッドについて見ていくことで、多相的関数を考える動機を知ろう。
+図[@fig:poly:monomorphic-map] は、通常のリストの変換の型チャートである。
+`List[A]` に `A => B` 型の関数を与えると、`List[B]` が結果として得られる。
+
+![通常のリストの変換(「単相的(monomorphic)」な変換)](src/pages/poly/monomorphic-map.pdf+svg){#fig:poly:monomorphic-map}
+
+`HList` の要素型は均質的でない(要素の型がすべて同じとは限らない)ので、このモデルではうまくいかない。
+Scala の関数の入力と出力の型は固定されているので、変換の結果もすべての要素が同じ型でなければならない。
+
+図[@fig:poly:polymorphic-map]に示すような `map` 演算が行えるのが理想だ。ここでは、関数がそれぞれの入力の型を調べ、その型に応じて各出力の型を決定している。
+これは `HList` の不均質性という性質を保ちながら、閉じた合成可能な変換をもたらす。
+
+![不均質リストの変換(「多相的(polymorphic)」な変換)](src/pages/poly/polymorphic-map.pdf+svg){#fig:poly:polymorphic-map}
+
+残念ながら、このような演算を Scala の関数で実装することはできない。
+何か新しい基盤が必要だ。

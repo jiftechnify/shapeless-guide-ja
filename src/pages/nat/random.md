@@ -162,7 +162,7 @@ for(i <- 1 to 100) random[Light]
 import shapeless.ops.coproduct
 import shapeless.ops.nat.ToInt
 
-implicit def coproductRandom[H, T, <: Coproduct, L <: Nat](
+implicit def coproductRandom[H, T <: Coproduct, L <: Nat](
   implicit
   hRandom: Lazy[Random[H]],
   tRandom: Random[T],
@@ -181,7 +181,7 @@ implicit def coproductRandom[H, T, <: Coproduct, L <: Nat](
 この変更により、任意の積型や余積型のランダム値を生成できるようになった:
 
 ```tut:book
-for(i < 1 to 5) println(random[Light])
+for(i <- 1 to 5) println(random[Light])
 ```
 
 ScalaCheck のためのテストデータの生成は通常、大量のボイラープレートを必要とする。

@@ -71,7 +71,7 @@ pages:
   - poly/summary.md
   #
   - nat/index.md
-  # - nat/length.md
+  - nat/length.md
   # - nat/random.md
   # - nat/ops.md
   # - nat/summary.md

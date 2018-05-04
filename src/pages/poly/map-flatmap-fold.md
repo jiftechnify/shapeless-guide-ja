@@ -14,7 +14,7 @@ object sizeOf extends Poly1 {
   implicit val stringCase: Case.Aux[String, Int] =
     at(_.length)
 
-  implicit val booleanCase: Cuse.Aux[Boolean, Int] =
+  implicit val booleanCase: Case.Aux[Boolean, Int] =
     at(bool => if(bool) 1 else 0)
 }
 ```

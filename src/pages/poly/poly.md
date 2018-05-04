@@ -68,7 +68,7 @@ myPoly.apply(123)
 import shapeless._
 
 object myPoly extends Poly1 {
-  implicit val intCase: Case.Aux[Int. Double] =
+  implicit val intCase: Case.Aux[Int, Double] =
     at(num => num / 2.0)
 
   implicit val stringCase: Case.Aux[String, Int] =

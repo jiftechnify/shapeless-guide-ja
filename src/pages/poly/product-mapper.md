@@ -64,7 +64,7 @@ case class IceCream2(name: String, hasCherries: Boolean, numCones: Int)
 ```
 
 ```tut:book
-IceCream1("Sundae", 1, false).mapTp[IceCream2](conversions)
+IceCream1("Sundae", 1, false).mapTo[IceCream2](conversions)
 ```
 
 `mapTo` 構文は1つのメソッド呼び出しのように見えるが、実際には2つの呼び出しが発生している:

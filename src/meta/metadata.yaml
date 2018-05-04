@@ -76,7 +76,7 @@ pages:
   - nat/ops.md
   - nat/summary.md
   #
-  # - conclusion/index.md
+  - conclusion/index.md
 
   # - notes/todos.md
   - links.md

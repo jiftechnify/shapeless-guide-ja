@@ -68,7 +68,7 @@ pages:
   - poly/poly.md
   - poly/map-flatmap-fold.md
   - poly/product-mapper.md
-  # - poly/summary.md
+  - poly/summary.md
   #
   # - nat/index.md
   # - nat/length.md

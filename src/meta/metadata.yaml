@@ -70,7 +70,7 @@ pages:
   - poly/product-mapper.md
   - poly/summary.md
   #
-  # - nat/index.md
+  - nat/index.md
   # - nat/length.md
   # - nat/random.md
   # - nat/ops.md

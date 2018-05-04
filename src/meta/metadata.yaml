@@ -74,7 +74,7 @@ pages:
   - nat/length.md
   - nat/random.md
   - nat/ops.md
-  # - nat/summary.md
+  - nat/summary.md
   #
   # - conclusion/index.md
 

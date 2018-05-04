@@ -3,24 +3,12 @@
 % Colors ----------------------------------------
 
 \usepackage[xcolor]{mdframed}
-
-$if(blackandwhiteprintable)$
-% \definecolor{primarycolor}{gray}{0.6}
-% \definecolor{successcolor}{gray}{0.6}
-\definecolor{warningcolor}{gray}{0.6}
-\definecolor{dangercolor}{gray}{0.6}
-\definecolor{infocolor}{gray}{0.6}
-\definecolor{titlecolor}{gray}{0.6}
-\definecolor{brandcolor}{gray}{0.6}
-$else$
+\definecolor{covercolor}{HTML}{$if(coverColor)$$coverColor$$else$777777$endif$}
 % \definecolor{primarycolor}{HTML}{428BCA}
 % \definecolor{successcolor}{HTML}{5CB85C}
 \definecolor{warningcolor}{HTML}{F0AD4E}
 \definecolor{dangercolor}{HTML}{D9534F}
 \definecolor{infocolor}{HTML}{5BC0DE}
-\definecolor{titlecolor}{HTML}{C02440}
-\definecolor{brandcolor}{HTML}{517679}
-$endif$
 
 % Fonts -----------------------------------------
 
@@ -52,38 +40,82 @@ $endif$
   \fi
   \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
   \newcommand{\euro}{€}
-$if(mainfont)$
-    \setmainfont$mainfont$
-$else$
-    \setmainfont[%
-      Color=primary,
-      Path=$lib-dir$/fonts/Lato/,
-      BoldItalicFont=Lato-BlackItalic,
-      BoldFont=Lato-Bold,
-      ItalicFont=Lato-Italic]{Lato-Regular}
-$endif$
+  % to support CJK characters!
+  \usepackage{xeCJK}
 
-$if(sansfont)$
-    \setsansfont{$sansfont$}
-$else$
-    \setsansfont[%
-      Color=primary,
-      Path=$lib-dir$/fonts/Lato/,
-      BoldItalicFont=Lato-BlackItalic,
-      BoldFont=Lato-Bold,
-      ItalicFont=Lato-Italic]{Lato-Regular}
-$endif$
+  $if(mainfont)$
+      \setmainfont$mainfont$
+  $else$
+      \setmainfont[%
+        Color=primary,
+        Path=$lib-dir$/fonts/Lato/,
+        BoldItalicFont=Lato-BlackItalic,
+        BoldFont=Lato-Bold,
+        ItalicFont=Lato-Italic]{Lato-Regular}
+  $endif$
 
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi]{$monofont$}
-$else$
-    \setmonofont[Mapping=tex-ansi]{Bitstream Vera Sans Mono}
-$endif$
+  $if(CJKmainfont)$
+      \setCJKmainfont{$CJKmainfont$}
+  $else$
+      \setCJKmainfont[
+        Color=primary,
+        Path=$lib-dir$/fonts/Noto/,
+        AutoFakeSlant=0.2,
+        BoldFont=NotoSansCJK-Bold,
+        ItalicFont=NotoSansCJK-Regular,
+        BoldItalicFont=NotoSansCJK-Bold,
+        ItalicFeatures={FakeSlant=0.2},
+        BoldItalicFeatures={FakeSlant=0.2}]{NotoSansCJK-Regular}
+  $endif$
 
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek){$mathfont$}
-$endif$
-\fi
+  $if(sansfont)$
+      \setsansfont{$sansfont$}
+  $else$
+      \setsansfont[%
+        Color=primary,
+        Path=$lib-dir$/fonts/Lato/,
+        BoldItalicFont=Lato-BlackItalic,
+        BoldFont=Lato-Bold,
+        ItalicFont=Lato-Italic]{Lato-Regular}
+  $endif$
+
+  $if(CJKsansfont)$
+      \setCJKsansfont{$CJKsansfont$}
+  $else$
+      \setCJKsansfont[
+        Color=primary,
+        Path=$lib-dir$/fonts/Noto/,
+        AutoFakeSlant=0.2,
+        BoldFont=NotoSansCJK-Bold,
+        ItalicFont=NotoSansCJK-Regular,
+        BoldItalicFont=NotoSansCJK-Bold,
+        ItalicFeatures={FakeSlant=0.2},
+        BoldItalicFeatures={FakeSlant=0.2}]{NotoSansCJK-Regular}
+  $endif$
+
+  $if(monofont)$
+      \setmonofont[Mapping=tex-ansi]{$monofont$}
+  $else$
+      \setmonofont[Mapping=tex-ansi]{Bitstream Vera Sans Mono}
+  $endif$
+
+  $if(CJKmonofont)$
+      \setCJKmonofont{$CJKmonofont$}
+  $else$
+      \setCJKmonofont[
+        Path=$lib-dir$/fonts/Noto/,
+        AutoFakeSlant=0.2,
+        BoldFont=NotoSansCJK-Bold,
+        ItalicFont=NotoSansCJK-Regular,
+        BoldItalicFont=NotoSansCJK-Bold,
+        ItalicFeatures={FakeSlant=0.2},
+        BoldItalicFeatures={FakeSlant=0.2}]{NotoSansCJK-Regular}
+  $endif$
+
+  $if(mathfont)$
+      \setmathfont(Digits,Latin,Greek){$mathfont$}
+  $endif$
+  \fi
 
 % Cover page ------------------------------------
 
